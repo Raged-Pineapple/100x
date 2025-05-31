@@ -1,0 +1,93 @@
+Starting job matching workflow
+Job description: 'Software Engineer needed with experience in Python, cloud computing, and machine learning. 3+ years of experience required. Location: Remote.'
+Created sample resume
+
+Step 1: Extracting job fields
+Extracted job fields:
+  Title: Software Engineer
+  Skills: ['Python', 'cloud computing', 'machine learning']
+  Experience: 3+ years of experience
+  Location: Remote
+
+Step 2: Scoring resumes
+Scored 1 resumes
+
+Results:
+{
+  "resume_id": "abc123.pdf",
+  "category": "Accountant",
+  "raw_text": "...",
+  "parsed": {
+    "name": "John Doe",
+    "education": [
+      {
+        "degree": "MBA",
+        "field": "Executive Leadership",
+        "institution": "University of Texas",
+        "start_year": 2016,
+        "end_year": 2018
+      },
+      {
+        "degree": "BSc",
+        "field": "Accounting",
+        "institution": "Richland College",
+        "start_year": 2005,
+        "end_year": 2008
+      }
+    ],
+    "certifications": [
+      "CPA",
+      "CMA",
+      "Lean Six Sigma Green Belt"
+    ],
+    "skills": {
+      "hard": [
+        "QuickBooks",
+        "ERP (SAP & Oracle)",
+        "SQL",
+        "Python"
+      ],
+      "soft": [
+        "Leadership"
+      ]
+    },
+    "experience": [
+      {
+        "title": "Online Teacher",
+        "company": "Udemy",
+        "start_year": 2017,
+        "end_year": null,
+        "description": "Teaching Accounting..."
+      }
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "level": "Native"
+      }
+    ],
+    "achievements": [],
+    "interests": [],
+    "memberships": []
+  },
+  "scores": {
+    "overall_score": 0.85
+  },
+  "embedding": null,
+  "meta": {
+    "source": "livecareer-csv"
+  }
+}
+
+Using direct sequential approach:
+Step 1: Extracting job fields
+After extraction: job_fields=title='Software Engineer' skills=['Python', 'cloud computing', 'machine learning'] experience='3+ years of experience' location='Remote'
+Step 2: Scoring resumes
+Direct approach produced 1 scored resumes
+
+Implementing a simplified graph workflow:
+Starting simple workflow
+After extraction: job_fields extracted
+After scoring: resumes scored
+Workflow produced 1 scored resumes
+Simplified workflow successful!
