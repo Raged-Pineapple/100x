@@ -208,9 +208,9 @@ def main():
             save_ranked_resumes(ranked_resumes, output_file)
             log_file.write(f"Saved ranked resumes to {output_file}\n")
             
-            # Display top matches
-            log_file.write("\nTop 5 matching resumes:\n")
-            for i, resume in enumerate(ranked_resumes[:5], 1):
+            # Display all ranked matches
+            log_file.write("\nAll ranked resumes (sorted by match score):\n")
+            for i, resume in enumerate(ranked_resumes, 1):
                 name = resume['meta']['name'] or "Unnamed"
                 position = resume['meta']['position'] or "Unknown position"
                 log_file.write(f"{i}. {name} ({position}) - Match Score: {resume['match_score']}%\n")
@@ -218,11 +218,8 @@ def main():
             
             # Print to console for confirmation
             print(f"Resume ranking completed successfully. Ranked {len(ranked_resumes)} resumes.")
-            print(f"Top 5 matching resumes:")
-            for i, resume in enumerate(ranked_resumes[:5], 1):
-                name = resume['meta']['name'] or "Unnamed"
-                position = resume['meta']['position'] or "Unknown position"
-                print(f"{i}. {name} ({position}) - Match Score: {resume['match_score']}%")
+            print(f"All resumes have been ranked and sorted by match score.")
+            print(f"Check {output_file} for the complete sorted list of resumes.")
             
             print("\nSee resume_ranking.log for detailed results.")
             print(f"Full results saved to {output_file}")
