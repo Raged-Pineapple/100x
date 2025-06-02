@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Matching System</title>
+    <link rel="stylesheet" href="landing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                JobMatch AI
+            </div>
+            <div class="nav-links">
+                <a href="/landing">Home</a>
+                <a href="#">Features</a>
+                <a href="#">How It Works</a>
+                <a href="/app" class="cta-button">Try Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="section-container" style="text-align: center; padding-top: 2rem; padding-bottom: 2rem;">
+            <h1>AI-Powered Job Matching System</h1>
+            <p class="subtitle">Intelligent resume analysis and job matching powered by advanced AI</p>
+        </header>
+
+        <section class="section-container" id="project-overview">
+            <div class="section-content">
+                <h2><i class="fas fa-rocket"></i> Project Overview</h2>
+                <p>This project implements an AI-powered job matching system designed to streamline the hiring process. It intelligently extracts key information from job descriptions and scores candidate resumes to find the best matches.</p>
+
+                <h3><i class="fas fa-star"></i> Key Features</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Smart Job Analysis</h4>
+                        <p>Automatically extracts essential details like title, skills, experience, and location from job descriptions.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Resume Scoring</h4>
+                        <p>Evaluates and scores candidate resumes based on their relevance to the job requirements.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-search"></i>
+                        <h4>Detailed Analysis</h4>
+                        <p>Provides comprehensive insights into skill and experience matches with visual indicators.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-cogs"></i>
+                        <h4>AI-Powered Matching</h4>
+                        <p>Uses advanced pattern matching and configurable scoring algorithms for accurate results.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <main class="section-container">
+            <section class="job-section feature-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-file-alt"></i> Job Description Analysis</h2>
+                    <p class="card-subtitle">Paste or type the job description to extract key requirements and skills.</p>
+                </div>
+                <div class="input-group">
+                    <textarea id="jobDescription" placeholder="Paste job description here..."></textarea>
+                    <button id="extractJobBtn" class="primary-button">
+                        <i class="fas fa-search"></i> Extract Job Fields
+                    </button>
+                </div>
+                
+                <div id="jobFields" class="results-container hidden">
+                    <div class="results-header">
+                        <h3><i class="fas fa-clipboard-list"></i> Extracted Job Fields</h3>
+                        <div class="results-summary">
+                            <span class="summary-item"><i class="fas fa-tag"></i> <span id="skillsCount">0</span> Skills</span>
+                            <span class="summary-item"><i class="fas fa-clock"></i> <span id="experienceLevel">-</span></span>
+                            <span class="summary-item"><i class="fas fa-map-marker-alt"></i> <span id="locationType">-</span></span>
+                        </div>
+                    </div>
+                    <div class="field-grid">
+                        <div class="field-item">
+                            <label><i class="fas fa-tag"></i> Title:</label>
+                            <span id="jobTitle" class="highlight-text">-</span>
+                        </div>
+                        <div class="field-item">
+                            <label><i class="fas fa-cogs"></i> Skills:</label>
+                            <div id="jobSkills" class="tag-container"></div>
+                        </div>
+                        <div class="field-item">
+                            <label><i class="fas fa-clock"></i> Experience:</label>
+                            <span id="jobExperience" class="highlight-text">-</span>
+                        </div>
+                        <div class="field-item">
+                            <label><i class="fas fa-map-marker-alt"></i> Location:</label>
+                            <span id="jobLocation" class="highlight-text">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section for displaying flow_output.log -->
+            <section class="flow-log-section feature-card hidden">  <!-- Added hidden class initially -->
+                <div class="card-header">
+                    <h2><i class="fas fa-terminal"></i> Backend Flow Output Log</h2>
+                    <p class="card-subtitle">Displays the latest output from the backend workflow execution.</p>
+                </div>
+                <div id="flowLogContent" class="log-container">
+                    Loading log content...
+                </div>
+            </section>
+
+            <section class="resume-section feature-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-user-check"></i> Resume Matching & Analysis</h2>
+                    <p class="card-subtitle">Paste or type a candidate resume to analyze its match against the job description.</p>
+                </div>
+                <div class="input-group">
+                    <textarea id="resumeText" placeholder="Paste resume text here..."></textarea>
+                    <button id="analyzeResumeBtn" class="primary-button">
+                        <i class="fas fa-chart-line"></i> Analyze Resume
+                    </button>
+                </div>
+
+                <div id="resumeResults" class="results-container hidden">
+                    <div class="results-header">
+                        <h3><i class="fas fa-poll"></i> Resume Analysis Results</h3>
+                        <div class="results-summary">
+                            <span class="summary-item"><i class="fas fa-check-circle"></i> <span id="matchStatus">-</span></span>
+                            <span class="summary-item"><i class="fas fa-clock"></i> Analysis Time: <span id="analysisTime">-</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="score-container">
+                        <div class="score-item">
+                            <label><i class="fas fa-star"></i> Overall Match Score:</label>
+                            <div class="score-circle">
+                                <span id="matchScore">0</span>%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-details">
+                        <div class="detail-item">
+                            <label><i class="fas fa-code"></i> Skills Match:</label>
+                            <div class="match-details">
+                                <div id="skillsMatch" class="match-bar"></div>
+                                <div class="match-stats">
+                                    <span id="skillsMatchPercent">0%</span>
+                                    <span id="skillsMatchCount">0/0 skills matched</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <label><i class="fas fa-briefcase"></i> Experience Match:</label>
+                            <div class="match-details">
+                                <div id="experienceMatch" class="match-bar"></div>
+                                <div class="match-stats">
+                                    <span id="experienceMatchPercent">0%</span>
+                                    <span id="experienceMatchDetails">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-analysis">
+                        <h4><i class="fas fa-list"></i> Detailed Analysis</h4>
+                        <div class="analysis-grid">
+                            <div class="analysis-item">
+                                <h5><i class="fas fa-check-circle"></i> Matching Skills</h5>
+                                <div id="matchingSkills" class="tag-container"></div>
+                            </div>
+                            <div class="analysis-item">
+                                <h5><i class="fas fa-times-circle"></i> Missing Skills</h5>
+                                <div id="missingSkills" class="tag-container"></div>
+                            </div>
+                            <div class="analysis-item">
+                                <h5><i class="fas fa-info-circle"></i> Experience Analysis</h5>
+                                <div id="experienceAnalysis" class="analysis-text"></div>
+                            </div>
+                            <div class="analysis-item">
+                                <h5><i class="fas fa-lightbulb"></i> Recommendations</h5>
+                                <div id="recommendations" class="analysis-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
